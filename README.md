@@ -18,7 +18,7 @@ In this repo, you will find samples for integrating partner solutions with Azure
 
 
 ## Integrations
-- [Experian](samples/experian) - Integrate Azure AD B2C with Experian.
+- [Experian](samples/Experian) - Integrate Azure AD B2C with Experian.
 
 - [IDology](samples/IDology) - Integrate Azure AD B2C with IDology.
 
