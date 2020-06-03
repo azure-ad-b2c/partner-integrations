@@ -1,0 +1,121 @@
+﻿namespace LexisNexisB2CApi.Controllers
+{
+    using System;
+    using System.Threading.Tasks;
+    using Authentication;
+<<<<<<< HEAD
+    using global::AutoMapper;
+    using LexisNexisB2CApi.Dto;
+    using LexisNexisB2CApi.Helpers;
+    using LexisNexisB2CApi.Models;
+    using LexisNexisB2CApi.Services;
+=======
+>>>>>>> Refactoring
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Models;
+    using Newtonsoft.Json;
+    using Services;
+
+    [Route("api/[controller]")]
+    [BasicAuth]
+    [ApiController]
+    public class IntegrationController : Controller
+    {
+        private readonly ILogger<IntegrationController> _logger;
+<<<<<<< HEAD
+        private readonly IIntegrationService _integrationService;
+        private readonly IMapper _mapper;
+
+        public IntegrationController(
+            ILogger<IntegrationController> logger,
+            IIntegrationService integrationService,
+            IMapper mapper)
+        {
+            _logger = logger;
+            _integrationService = integrationService;
+            _mapper = mapper;
+        }
+
+        [HttpPost]
+=======
+        private readonly ISessionQueryService _sessionQueryService;
+
+        public IntegrationController(
+            ILogger<IntegrationController> logger,
+            ISessionQueryService sessionQueryService)
+        {
+            _logger = logger;
+            _sessionQueryService = sessionQueryService;
+        }
+
+        [HttpPost]
+        [BasicAuth]
+>>>>>>> Refactoring
+        [Consumes("application/json")]
+        [Route("SessionQuery")]
+        public async Task<IActionResult> SessionQueryCall([FromBody] SessionQueryServiceInput inputData)
+        {
+            if (inputData == null)
+            {
+                return BadRequest("Null Parameters received");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("One or more parameters received are not valid");
+            }
+
+<<<<<<< HEAD
+            return await SessionQueryHelper(sessionQueryDto);
+        }
+
+        [HttpPost]
+        [Consumes("application/x-www-form-urlencoded")]
+        [Route("SessionQuery")]
+        public async Task<IActionResult> SessionQueryCall([FromForm]IFormCollection sessionQueryParam)
+        {
+            if (sessionQueryParam == null)
+            {
+                return BadRequest("Null Parameters received");
+            }
+
+            var sessionQueryDto = new SessionQueryDto();
+            if (!await TryUpdateModelAsync(sessionQueryDto))
+            {
+                return BadRequest("One or more parameters received are not valid");
+            }
+
+            return await SessionQueryHelper(sessionQueryDto);
+        }
+
+        private async Task<IActionResult> SessionQueryHelper(SessionQueryDto sessionQueryDto)
+        {
+            try
+            {
+                var sessionQueryServiceInput = _mapper.Map<SessionQueryServiceInput>(sessionQueryDto);
+                var serviceOutput = await _integrationService.GetSessionData(sessionQueryServiceInput);
+
+                if (sessionQueryServiceInput.OutputFormat == OutputFormat.Json)
+                {
+                    //var sessionQueryServiceOutput = JsonConvert.DeserializeObject<SessionQueryServiceOutput>(serviceOutput, new SessionQueryOutputJsonConverter());
+                    return Ok(serviceOutput);
+                }
+                else
+                {
+                    return Ok(serviceOutput);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+=======
+            var sessionQueryServiceOutput = await _sessionQueryService.GetSessionData(inputData);
+
+            return Json(sessionQueryServiceOutput);
+>>>>>>> Refactoring
+        }
+    }
+}

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0" TenantId="yourtenant.onmicrosoft.com" PolicyId="B2C_1A_experian_local_TrustFrameworkExtensions" PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_experian_local_TrustFrameworkExtensions">
+
+  <BasePolicy>
+    <TenantId>yourtenant.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_experian_local_TrustFrameworkBase</PolicyId>
+  </BasePolicy>
+
+  <BuildingBlocks>
+
+    <ClaimsSchema>
+      <ClaimType Id="strongAuthenticationPhoneNumber">
+        <DisplayName>Phone Number</DisplayName>
+        <DataType>string</DataType>
+        <Mask Type="Simple">XXX-XXX-</Mask>
+        <UserHelpText>Your telephone number</UserHelpText>
+        <UserInputType>TextBox</UserInputType>
+        <PredicateValidationReference Id="internationalOrNationalPhoneNumber" />
+      </ClaimType>
+
+      <ClaimType Id="CorrelationId">
+        <DisplayName>Correlation Id</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Request Correlation Id.</UserHelpText>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+
+      <ClaimType Id="OrganizationId">
+        <DisplayName>Organization Id</DisplayName>
+        <DataType>string</DataType>
+        <UserHelpText>Organization Id.</UserHelpText>
+        <UserInputType>TextBox</UserInputType>
+      </ClaimType>
+
+      <ClaimType Id="lexisEventType">
+        <DataType>string</DataType>
+      </ClaimType>
+
+      <ClaimType Id="lexisPolicy">
+        <DataType>string</DataType>
+      </ClaimType>
+
+      <ClaimType Id="lexisServiceType">
+        <DataType>string</DataType>
+      </ClaimType>
+
+      <ClaimType Id="lexisFullOutput">
+        <DisplayName>JSONResponse</DisplayName>
+        <DataType>string</DataType>
+        <AdminHelpText>Add help text here</AdminHelpText>
+      </ClaimType>
+
+      <ClaimType Id="lexisReviewStatus">
+        <DataType>string</DataType>
+      </ClaimType>
+
+      <ClaimType Id="lexisPolicyScore">
+        <DataType>string</DataType>
+      </ClaimType>
+
+      <ClaimType Id="lexisRiskRating">
+        <DataType>string</DataType>
+      </ClaimType>
+
+      <ClaimType Id="lexisReasonCode">
+        <DataType>string</DataType>
+      </ClaimType>
+
+    </ClaimsSchema>
+
+    <Predicates>
+      <Predicate Id="internationalOrNationalPhoneNumber" Method="MatchesRegex">
+        <UserHelpText>The value entered needs to be a phone number.</UserHelpText>
+        <Parameters>
+          <Parameter Id="RegularExpression">^\+?(?:[-()\s]*\d[-()\s]*){4,16}$</Parameter>
+        </Parameters>
+      </Predicate>
+    </Predicates>
+    <PredicateValidations>
+      <PredicateValidation Id="internationalOrNationalPhoneNumber">
+        <PredicateGroups>
+          <PredicateGroup Id="internationalOrNationalPhoneNumber">
+            <UserHelpText>Please enter a valid phone number.</UserHelpText>
+            <PredicateReferences>
+              <PredicateReference Id="internationalOrNationalPhoneNumber" />
+            </PredicateReferences>
+          </PredicateGroup>
+        </PredicateGroups>
+      </PredicateValidation>
+    </PredicateValidations>
+
+    <ContentDefinitions>
+
+      <ContentDefinition Id="api.localaccountsignup">
+        <LoadUri>https://yourblobstorage/blobcontainer/ocean_blue/signup.html</LoadUri>
+      </ContentDefinition>
+
+    </ContentDefinitions>
+  </BuildingBlocks>
+
+  <ClaimsProviders>
+
+    <ClaimsProvider>
+      <DisplayName>Local Account SignIn</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="login-NonInteractive">
+          <Metadata>
+            <!--Demo action required: Change to your ProxyIdentityExperienceFramework App Id-->
+            <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
+            <!--Demo action required: Change to your IdentityExperienceFramework App Id-->
+            <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>
+          </Metadata>
+          <InputClaims>
+            <!--Demo action required: Change to your ProxyIdentityExperienceFramework App Id-->
+            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="00000000-0000-0000-0000-000000000000" />
+            <!--Demo action required: Change to your IdentityExperienceFramework App Id-->
+            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="00000000-0000-0000-0000-000000000000" />
+          </InputClaims>
+        </TechnicalProfile>
+
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+    <ClaimsProvider>
+      <DisplayName>Azure Active Directory</DisplayName>
+      <TechnicalProfiles>
+
+        <TechnicalProfile Id="AAD-Common">
+          <DisplayName>Azure Active Directory</DisplayName>
+          <!--  Demo action required: Provide objectId and appId before using extension properties.
+                For more information: https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-create-custom-attributes-profile-edit-custom 
+                Action required: Insert objectId and appId here -->
+          <Metadata>
+            <Item Key="ApplicationObjectId">00000000-0000-0000-0000-000000000000</Item>
+            <Item Key="ClientId">00000000-0000-0000-0000-000000000000</Item>
+          </Metadata>
+        </TechnicalProfile>
+
+        <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+          <PersistedClaims>
+            <!-- Optional claims. -->
+            <PersistedClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />
+          </PersistedClaims>
+        </TechnicalProfile>
+
+        <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
+          <OutputClaims>
+            <!-- Optional claims -->
+            <OutputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />
+          </OutputClaims>
+        </TechnicalProfile>
+
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+    <ClaimsProvider>
+      <DisplayName>REST API</DisplayName>
+      <TechnicalProfiles>
+
+        <TechnicalProfile Id="Rest-lexisNexus-SessionQuery">
+          <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/Integration/SessionQuery</Item>
+            <Item Key="AuthenticationType">Basic</Item>
+            <Item Key="SendClaimsIn">Body</Item>
+            <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="BasicAuthenticationUsername" StorageReferenceId="B2C_1A_RestApiUsername" />
+            <Key Id="BasicAuthenticationPassword" StorageReferenceId="B2C_1A_RestApiPassword" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="Email" />
+            <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" PartnerClaimType="PhoneNumber" />
+            <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="SessionId" DefaultValue="{Context:CorrelationId}" AlwaysUseDefaultValue="true" />
+            <InputClaim ClaimTypeReferenceId="lexisEventType" PartnerClaimType="EventType" DefaultValue="login" AlwaysUseDefaultValue="true"/>
+            <InputClaim ClaimTypeReferenceId="lexisServiceType" PartnerClaimType="ServiceType" DefaultValue="did" AlwaysUseDefaultValue="true"/>
+            <InputClaim ClaimTypeReferenceId="lexisPolicy" PartnerClaimType="Policy" DefaultValue="Sample Policy" AlwaysUseDefaultValue="true"/>
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="lexisFullOutput" PartnerClaimType="FullOutput"/>
+            <OutputClaim ClaimTypeReferenceId="lexisReviewStatus" PartnerClaimType="ReviewStatus"/>
+            <OutputClaim ClaimTypeReferenceId="lexisPolicyScore" PartnerClaimType="PolicyScore"/>
+            <OutputClaim ClaimTypeReferenceId="lexisRiskRating" PartnerClaimType="RiskRating"/>
+            <OutputClaim ClaimTypeReferenceId="lexisReasonCode" PartnerClaimType="ReasonCode"/>
+          </OutputClaims>
+        </TechnicalProfile>
+
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+
+        <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail-Custom">
+          <DisplayName>Email signup</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
+            <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
+            <Item Key="language.button_continue">Create</Item>
+            <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
+            <Item Key="EnforceEmailVerification">False</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="email" />
+            <InputClaim ClaimTypeReferenceId="CorrelationId" DefaultValue="{Context:CorrelationId}" AlwaysUseDefaultValue="true" />
+            <InputClaim ClaimTypeReferenceId="OrganizationId" DefaultValue="4dbu14ze" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" />
+            <OutputClaim ClaimTypeReferenceId="newUser" />
+
+            <!-- Optional claims, to be collected from the user -->
+            <OutputClaim ClaimTypeReferenceId="displayName" />
+            <OutputClaim ClaimTypeReferenceId="givenName" />
+            <OutputClaim ClaimTypeReferenceId="surName" />
+            <OutputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" Required="true" />
+            <OutputClaim ClaimTypeReferenceId="CorrelationId" />
+            <OutputClaim ClaimTypeReferenceId="OrganizationId" />
+
+            <OutputClaim ClaimTypeReferenceId="lexisFullOutput" />
+            <OutputClaim ClaimTypeReferenceId="lexisReviewStatus" />
+            <OutputClaim ClaimTypeReferenceId="lexisPolicyScore" />
+            <OutputClaim ClaimTypeReferenceId="lexisRiskRating" />
+            <OutputClaim ClaimTypeReferenceId="lexisReasonCode" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="Rest-lexisNexus-SessionQuery" />
+            <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
+          </ValidationTechnicalProfiles>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+  </ClaimsProviders>
+
+  <UserJourneys>
+    <UserJourney Id="SignUpOrSignIn-LexisNexis">
+      <OrchestrationSteps>
+
+        <!-- Track that we have received an authentication request -->
+        <OrchestrationStep Order="1" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="TrackAuthenticationRequest" TechnicalProfileReferenceId="AzureInsights-AuthenticationRequest" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <OrchestrationStep Order="2" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+          <ClaimsProviderSelections>
+            <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
+          </ClaimsProviderSelections>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <OrchestrationStep Order="3" Type="ClaimsExchange">
+          <Preconditions>
+            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+              <Value>objectId</Value>
+              <Action>SkipThisOrchestrationStep</Action>
+            </Precondition>
+          </Preconditions>
+          <ClaimsExchanges>
+            <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail-Custom" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <!-- Track that the authentication step is completed -->
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="TrackAuthenticationComplete" TechnicalProfileReferenceId="AzureInsights-AuthenticationComplete" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <!-- This step reads any user attributes that we may not have received when in the token. -->
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+        <OrchestrationStep Order="6" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+
+        <!-- Track that we have successfully sent a token -->
+        <OrchestrationStep Order="7" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="TrackTokenIssued" TechnicalProfileReferenceId="AzureInsights-TokenIssued" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+
+      </OrchestrationSteps>
+      <ClientDefinition ReferenceId="DefaultWeb" />
+    </UserJourney>
+
+  </UserJourneys>
+
+</TrustFrameworkPolicy>
