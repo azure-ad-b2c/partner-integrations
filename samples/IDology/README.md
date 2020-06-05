@@ -1,6 +1,6 @@
 # IDology Azure AD B2C Integration
 
-IDology is an ID verification service that can be used to verify
+[IDology](https://www.idology.com/request-a-demo/microsoft-integration-signup/) is an ID verification service that can be used to verify
 identification provided by users.
 
 ## Solution Components

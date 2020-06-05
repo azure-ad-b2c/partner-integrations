@@ -1,6 +1,6 @@
 # Experian B2C Integration
 
-Experian is an ID verification service that can be used to verify
+[Experian](https://www.experian.com/decision-analytics/account-opening-fraud/microsoft-integration) is an ID verification service that can be used to verify
 identification provided by users.
 
 This integration asks the user for several identifying pieces of
