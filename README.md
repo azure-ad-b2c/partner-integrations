@@ -22,6 +22,8 @@ In this repo, you will find samples for integrating partner solutions with Azure
 
 - [IDology](samples/IDology) - Integrate Azure AD B2C with [IDology](https://www.idology.com/request-a-demo/microsoft-integration-signup/).
 
+- [Jumio](samples/Jumio) - [Jumio](https://www.jumio.com/) enables real-time automated ID verification, safeguarding customer data. Here, we integrating Jumio ID verification service and Azure AD B2C with the help of an Intermediate REST API Service.
+
 - [ThreatMetrix](samples/ThreatMetrix) - Integrate Azure AD B2C with ThreatMetrix.
 
 - [Twilio Verify API for PSD2 SCA](samples/Twilio-VerifyAPI) - The following sample guides you through integrating Azure AD B2C authentication with Twilio Verify API to enable your organization to meet PSD2 SCA requirements.
