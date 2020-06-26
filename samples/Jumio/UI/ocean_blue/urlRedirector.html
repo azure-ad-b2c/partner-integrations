@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)../assets/AzureBlue/selfAsserted.cshtml -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Sign up</title>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/assets.css" rel="stylesheet" type="text/css" />
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/selfasserted.css" rel="stylesheet" type="text/css" />
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script> -->
+    <style>
+        #jumioCallbackUrl{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container  self_asserted_container ">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img alt="Company Logo" class="companyLogo" src="{your-ui-blob-container-url}/assets/images/logo.svg">
+                        <div id="api">
+                        </div>
+                        <div>You are being redirected to NETVERIFY. This process is automatic.</div>
+                        <div>If you are not redirected within 5 seconds please click <a id="manualRedirect" href=# >here</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    var redirectUrl;
+    $(document).ready(function () {
+        redirectUrl=$("#jumioCallbackUrl").text();
+        $("#manualRedirect").attr("href",redirectUrl);
+        setTimeout("pageRedirect()", 1000);
+    });
+    function pageRedirect() {
+        window.location.href = redirectUrl;
+    }    
+</script>
+</html>

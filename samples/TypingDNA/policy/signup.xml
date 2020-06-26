@@ -14,9 +14,9 @@
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="OpenIdConnect" />
       <OutputClaims>
-         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
         <OutputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="email"/>
-        <OutputClaim ClaimTypeReferenceId="typingpattern" />
+        <!--<OutputClaim ClaimTypeReferenceId="typingpattern" />-->
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)../assets/AzureBlue/selfAsserted.cshtml -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Sign up</title>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/assets.css" rel="stylesheet" type="text/css" />
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/selfasserted.css" rel="stylesheet" type="text/css" />
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>     -->
+    <style>
+        #verificationToken{
+            display:none;
+        }
+        #uiResponseToken{
+            display: none;
+        }
+        button#continue{
+            display:none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container  self_asserted_container ">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img alt="Company Logo" class="companyLogo" src="{your-ui-blob-container-url}/assets/images/logo.svg">
+                        <div id="api">
+                        </div>
+                        <div id="divProgressing">
+                            <div>We are verifying your documents...</div>
+                            <div>Please allow upto <h4><code><span id=counter>300</span></code></h4> seconds.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>    
+    $(document).ready(function () {
+
+        var counter=300;
+
+        var pollingCounter=0;
+
+        var requestdata= {VerificationToken: $("#verificationToken").text()}
+
+        var pollingIntervals= [1,60, 120, 180, 240, 290];
+
+        var nextPollingInterval=pollingIntervals[0];
+
+        var showTimer = setInterval(function (){
+
+            counter=counter-1;
+
+            $("#counter").text(counter);
+            if(counter<=0)
+            { 
+                
+                if(!$("#uiResponseToken").val())
+                {
+                    $("#uiResponseToken").val($("#verificationToken").text());
+                }
+
+                $("button#continue").trigger("click");
+                clearInterval(showTimer);
+            }
+
+            pollingCounter=pollingCounter+1;
+
+            if(pollingCounter==nextPollingInterval){
+
+                
+                pollingIntervals.shift();
+
+                if(pollingIntervals.length>1)
+                {
+                    nextPollingInterval=pollingIntervals[0];
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url:"{your-intermediate-api-url}/api/Jumio/VerifyTransactionStatus",
+                    data: JSON.stringify(requestdata),
+                    headers:{
+                        "Content-Type":"application/json"
+                    },                    
+                    success: function(data,status) {
+                        if(data.status=="SUCCESS"||data.status=="FAILED"){
+                            clearInterval(showTimer);
+                            $("#uiResponseToken").val(data.verificationToken);
+                            $("button#continue").trigger("click");
+                        }
+                        else
+                        {
+                            $("#uiResponseToken").val(data.verificationToken);
+                        }
+                    },
+                    error: function (err) {
+                        alert(err.statusText);
+                    } 
+                });
+            }
+
+        },1000);
+    });
+    
+</script>
+</html>
