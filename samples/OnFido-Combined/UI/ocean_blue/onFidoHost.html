@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)../assets/AzureBlue/selfAsserted.cshtml -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Sign up</title>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/assets.css" rel="stylesheet" type="text/css" />
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="{your-ui-blob-container-url}/ocean_blue/css/selfasserted.css" rel="stylesheet" type="text/css" />
+    <script src='{your-ui-blob-container-url}/dist/onfido.min.js'></script>
+    <link rel='stylesheet' href='{your-ui-blob-container-url}/dist/style.css'>
+</head>
+<style>
+    .onfido-sdk-ui-Modal-inner{
+        max-width: 24em;
+    }
+    #fidoToken{
+        display: none;
+    }
+    #onfido-mount{
+        padding-top: 1em;
+    }
+</style>
+<body>
+    <div class="container  self_asserted_container ">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img alt="Company Logo" class="companyLogo" src="{your-ui-blob-container-url}/assets/images/contoso.png">
+                        <div id='onfido-mount'></div>
+                        <div id="user-wait-message">Loading</div>
+                        <div id="api">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    $(function(){
+        $('#continue').hide();
+        LoadOnFido();
+    });
+
+    function LoadOnFido(){
+        
+        if(typeof Onfido !="undefined")
+        {
+            debugger;
+            $("#user-wait-message").hide();
+            Onfido.init({
+                // the JWT token that you generated earlier on
+                token: $('#fidoToken').text(),
+                //token:'',
+                // id of the element you want to mount the component on
+                containerId: 'onfido-mount',
+                smsNumberCountryCode: 'US',
+                steps: [
+                {
+                    type: 'welcome',
+                    options: {
+                        title: 'Document Verification',
+                        descriptions:[
+                            'To comply with KYC requirements, please furnish a proof of your identity.',
+                            'This will only take a few minutes.'
+                            ]
+                    }
+                },
+                'document',
+                'face'
+                ],
+                onComplete: function(data) {
+                    console.log("everything is complete")
+                    $('#continue').click();
+                    // `data` will be an object that looks something like this:
+                    //
+                    // {
+                    //   "document_front": {
+                    //     "id": "5c7b8461-0e31-4161-9b21-34b1d35dde61",
+                    //     "type": "passport",
+                    //     "side": "front"
+                    //   },
+                    //   "face": {
+                    //     "id": "0af77131-fd71-4221-a7c1-781f22aacd01",
+                    //     "variant": "standard"
+                    //   }
+                    // }
+                    //
+                    // For two-sided documents like `driving_licence` and `national_identity_card`, the object will also
+                    // contain a `document_back` property representing the reverse side:
+                    //
+                    // {
+                    //   ...
+                    //   "document_back": {
+                    //     "id": "6f63bfff-066e-4152-8024-3427c5fbf45d",
+                    //     "type": "driving_licence",
+                    //     "side": "back"
+                    // }
+                    //
+                    // You can now trigger your backend to start a new check
+                    // `data.face.variant` will return the variant used for the face step
+                    // this can be used to perform a facial similarity check on the applicant
+                }
+
+            });
+        }
+
+        else{
+            setTimeout(function () {
+                    $('#user-wait-message').text($('#user-wait-message').text()+'.');
+                    LoadOnFido();
+                },1000);
+        }
+        
+    }
+
+    
+</script>
+
+</html>
