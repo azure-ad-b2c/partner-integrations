@@ -9,7 +9,7 @@ This integration performs a profiling step during the sign-up flow and
 asks the user for a few pieces of information. As the sign-up step
 completes, a call is made to ThreatMetrix to determine the risk
 assessment based on the user's information and device profiling. The
-following attributes are used in making a pass/fail decision:
+following attributes are used in ThreatMetrix's risk analysis:
 
 -   Email
 
