@@ -24,6 +24,9 @@ In this repo, you will find samples for integrating partner solutions with Azure
 
 - [Jumio](samples/Jumio) - [Jumio](https://www.jumio.com/) enables real-time automated ID verification, safeguarding customer data. Here, we integrating Jumio ID verification service and Azure AD B2C with the help of an Intermediate REST API Service.
 
+- [OnFido](samples/OnFido-Combined) [OnFido](https://onfido.com/) is a Document ID and facial biometrics verification SaaS that allows companies to meet "Know Your Customer" and Identity requirements in real time. Here, we are integrating and hosting the OnFido document client within Azure AD B2C.
+
+
 - [ThreatMetrix](samples/ThreatMetrix) - Integrate Azure AD B2C with ThreatMetrix.
 
 - [Twilio Verify API for PSD2 SCA](samples/Twilio-VerifyAPI) - The following sample guides you through integrating Azure AD B2C authentication with Twilio Verify API to enable your organization to meet PSD2 SCA requirements.
