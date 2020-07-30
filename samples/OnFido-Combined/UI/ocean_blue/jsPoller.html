@@ -32,7 +32,7 @@
                         </div>
                         <div id="divProgressing">
                             <div>We are verifying your documents...</div>
-                            <div>Please allow upto <h4><code><span id=counter>60</span></code></h4> seconds.</div>
+                            <div>Please allow upto <h4><code><span id=counter>300</span></code></h4> seconds.</div>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
 </body>
 <script>
     $(function(){
-        var counter=60;
+        var counter=300;
         var requestdata={href: $('#extension_checkHref').text()}
         var poller=setInterval(function(){
             counter = counter -1;
@@ -65,6 +65,7 @@
                     },
                     error: function (err) {
                         alert(err.statusText);
+                        clearInterval(poller);
                     } 
                 });
             }
