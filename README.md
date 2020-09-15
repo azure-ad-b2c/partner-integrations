@@ -18,6 +18,8 @@ In this repo, you will find samples for integrating partner solutions with Azure
 
 
 ## Integrations
+- [Dynamics Fraud Protection](samples/Dynamics-Fraud-Protection) - Integrate Azure AD B2C with [Dynamics Fraud Protection](https://dynamics.microsoft.com/en-gb/ai/fraud-protection/) to externally fingerprint every sign in or sign up attempt and watch for any past or present suspicious behaviour.
+
 - [Experian](samples/Experian) - Integrate Azure AD B2C with [Experian](https://www.experian.com/decision-analytics/account-opening-fraud/microsoft-integration).
 
 - [IDology](samples/IDology) - Integrate Azure AD B2C with [IDology](https://www.idology.com/request-a-demo/microsoft-integration-signup/).

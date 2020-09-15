@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="{your_tenant_name}.onmicrosoft.com"
+  PolicyId="B2C_1A_Dynamics_SocialLocalMfa_SignInSignUp"
+  PublicPolicyUri="http://{your_tenant_name}.onmicrosoft.com/B2C_1A_Dynamics_SocialLocalMfa_SignInSignUp"
+  DeploymentMode="Development" 
+  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+
+  <!-- Build Number: dynamics_demo_{Settings:Release.ReleaseName} -->
+
+  <BasePolicy>
+    <TenantId>{your_tenant_name}.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_Dynamics_SocialLocalMfa_TrustFrameworkExtensions</PolicyId>
+  </BasePolicy>
+
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn-Custom" />
+    <UserJourneyBehaviors>
+      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{your_app_insights_instrumentation_key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+      <ScriptExecution>Allow</ScriptExecution>
+    </UserJourneyBehaviors>
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="signInNames.emailAddress" PartnerClaimType="email" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="buildId" AlwaysUseDefaultValue="true" DefaultValue="dynamics_demo_{Settings:Release.ReleaseName}" />        
+        <OutputClaim ClaimTypeReferenceId="dfp_merchantRuleDecision" DefaultValue="Nil" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+
+
+
