@@ -1,10 +1,6 @@
 # Introduction
 
-Dynamics Fraud Protection is an AI powered customer verification and decision
-making tool aimed at increasing revenue and protecting reputation with
-comprehensive fraud protection that decreases fraud, reduces operational
-expenses, and increases bank acceptance rates. This service is part of the
-Dynamics365 suite.
+Microsoft Dynamics 365 Fraud Protection Account Protection provides clients the capability to assess if the risk of attempts to create new accounts and attempts to login on client’s ecosystem are fraudulent. DFP assessment in Fraud Protection can be used by the customer to block or challenge suspicious attempts to create new fake accounts or to compromise existing accounts. Account protection includes artificial intelligence empowered device fingerprinting, APIs for real-time risk assessment, rule and list experience to optimize risk strategy as per client’s business needs, and a scorecard to monitor fraud protection effectiveness and trends in client’s ecosystem.
 
 In this sample, we will be demonstrating the account protection features of
 Dynamics365 Fraud Protection by integrating it with an Azure AD B2C user flow. The
