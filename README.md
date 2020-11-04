@@ -26,7 +26,7 @@ In this repo, you will find samples for integrating partner solutions with Azure
 
 - [Jumio](samples/Jumio) - [Jumio](https://www.jumio.com/) enables real-time automated ID verification, safeguarding customer data. Here, we integrating Jumio ID verification service and Azure AD B2C with the help of an Intermediate REST API Service.
 
-- [Nevis](samples/Nevis) - [Nevis] (https://www.nevis-security.com/en/offering/authentication-cloud/) provides a mobile-first, fully-brandable and secure authentication experience for the end-users with Azure AD B2C. Enables strong customer authentication (SCA) and complies with PSD2 (Payment Services Directive 2) transaction requirements using the whitelabel NEVIS Access App
+- [Nevis](samples/Nevis) - [Nevis](https://www.nevis-security.com/en/offering/authentication-cloud/) provides a mobile-first, fully-brandable and secure authentication experience for the end-users with Azure AD B2C. Enables strong customer authentication (SCA) and complies with PSD2 (Payment Services Directive 2) transaction requirements using the whitelabel NEVIS Access App
 
 - [OnFido](samples/OnFido-Combined) - [OnFido](https://onfido.com/) is a Document ID and facial biometrics verification SaaS that allows companies to meet "Know Your Customer" and Identity requirements in real time. Here, we are integrating and hosting the OnFido document client within Azure AD B2C.
 
