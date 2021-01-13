@@ -10,6 +10,9 @@
   </BasePolicy>
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpTDNA" />
+    <UserJourneyBehaviors>
+      <ScriptExecution>Allow</ScriptExecution>
+    </UserJourneyBehaviors>
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="OpenIdConnect" />
