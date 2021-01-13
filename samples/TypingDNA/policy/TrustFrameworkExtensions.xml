@@ -73,8 +73,46 @@
           <Item Key="DisplayName">Collect information from user page</Item>
         </Metadata>
       </ContentDefinition>
-    </ContentDefinitions>
+	    
+      <ContentDefinition Id="api.error">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.idpselections">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0</DataUri>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.idpselections.signup">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0</DataUri>
+      </ContentDefinition>
+
+
+      <ContentDefinition Id="api.signuporsignin">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.0.0</DataUri>
+      </ContentDefinition>
+	  
+      <ContentDefinition Id="api.selfasserted">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0</DataUri>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.selfasserted.profileupdate">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0</DataUri>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.localaccountsignup">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.localaccountpasswordreset">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0</DataUri>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.phonefactor">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0</DataUri>
+      </ContentDefinition>	    
+    </ContentDefinitions>	  
   </BuildingBlocks>
+	
   <ClaimsProviders>
     <ClaimsProvider>
       <DisplayName>TDNA REST APIs</DisplayName>
@@ -284,12 +322,12 @@
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
+        <OrchestrationStep Order="4" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="AADUserWriteWithObjectId" TechnicalProfileReferenceId="AAD-UserWritePhoneNumberUsingObjectId" />
           </ClaimsExchanges>
         </OrchestrationStep>
-        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="5" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>
@@ -327,7 +365,7 @@
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="3" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>
