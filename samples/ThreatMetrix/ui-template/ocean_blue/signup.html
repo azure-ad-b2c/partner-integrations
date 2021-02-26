@@ -40,7 +40,7 @@
        $(document).ready(function(){
            
             var org_id = $("#OrganizationId").val();
-            var session_id = $("#CorrelationId").val();
+            var session_id = JSON.parse(atob(SETTINGS.transId.split("=")[1])).TID
 
             var head = document.getElementsByTagName("head").item(0);
             var script = document.createElement("script");
