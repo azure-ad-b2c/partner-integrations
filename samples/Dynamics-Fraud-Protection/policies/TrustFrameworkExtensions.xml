@@ -580,6 +580,10 @@
 
             <OutputClaim ClaimTypeReferenceId="dfp_merchantRuleDecision" />
             <OutputClaim ClaimTypeReferenceId="dfp_transactionId" />
+            <OutputClaim ClaimTypeReferenceId="dfp_response_score0" />
+            <OutputClaim ClaimTypeReferenceId="dfp_response_score1" />
+            <OutputClaim ClaimTypeReferenceId="dfp_response_score0_isRiskScore" />
+
             <OutputClaim ClaimTypeReferenceId="IsSignUp" DefaultValue="true" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <ValidationTechnicalProfiles>
@@ -692,6 +696,10 @@
 
             <OutputClaim ClaimTypeReferenceId="dfp_merchantRuleDecision" />
             <OutputClaim ClaimTypeReferenceId="dfp_transactionId" />
+            <OutputClaim ClaimTypeReferenceId="dfp_response_score0" />
+            <OutputClaim ClaimTypeReferenceId="dfp_response_score1" />
+            <OutputClaim ClaimTypeReferenceId="dfp_response_score0_isRiskScore" />
+
             <OutputClaim ClaimTypeReferenceId="IsSignUp" DefaultValue="true" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <ValidationTechnicalProfiles>
@@ -836,7 +844,7 @@
         <TechnicalProfile Id="RestApi-DFP-CreateAccount">
           <DisplayName>DFP Create Account</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/create/dummyValue</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/create/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-ConvertAuthSourceToAuthProvier" />
@@ -859,7 +867,7 @@
         <TechnicalProfile Id="RestApi-DFP-CreateAccountStatus">
           <DisplayName>DFP Create Account Status</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/create/status/dummyValue</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/create/status/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-CreateAccountStatus-RequestPayload" />
@@ -870,7 +878,7 @@
         <TechnicalProfile Id="RestApi-DFP-LoginAccount">
           <DisplayName>DFP Login</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/login/dummyValue</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/login/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-ConvertAuthSourceToAuthProvier" />
@@ -893,7 +901,7 @@
         <TechnicalProfile Id="RestApi-DFP-LoginAccountStatus">
           <DisplayName>DFP Login Status</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/login/status/dummyValue</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/login/status/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-LoginAccountStatus-RequestPayload" />
@@ -908,7 +916,7 @@
         <TechnicalProfile Id="RestApi-DFP-UpdateAccount">
           <DisplayName>DFP Update Account</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/update/dummyValue</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/update/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-ConvertAuthSourceToAuthProvier" />

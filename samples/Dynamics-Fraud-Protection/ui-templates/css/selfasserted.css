@@ -1,88 +1,107 @@
 .self_asserted_container .row .panel-default {
-  padding: 40px 30px;
-  margin: auto;
-  height: 100%;
-  background-color: white;
+    padding: 40px 30px;
+    margin: auto;
+    height: 100%;
+    background-color: white;
 }
+
 .self_asserted_container .row .panel-default .panel-body {
-  margin: 0 auto;
-  max-width: 380px;
-  width: auto;
-  padding: 0px;
+    margin: 0 auto;
+    max-width: 380px;
+    width: auto;
+    padding: 0px;
 }
+
 .self_asserted_container .row .panel-default .panel-body img.companyLogo {
-  display: block;
-  margin: auto;
-  height: 70px;
+    display: block;
+    margin: auto;
+    height: 70px;
 }
+
 .self_asserted_container .row .panel-default .panel-body .branding h1 {
-  font-size: 1.5em;
-  color: #505050;
+    font-size: 1.5em;
+    color: #505050;
 }
+
 .self_asserted_container .row .panel-default .panel-body h3 {
-  font-size: 1.5em;
-  color: #505050;
-  margin-top: 5px;
-  margin-bottom: 30px;
+    font-size: 1.5em;
+    color: #505050;
+    margin-top: 5px;
+    margin-bottom: 30px;
 }
+
 .self_asserted_container .row .panel-default .panel-body .intro {
-  display: none;
-  text-align: left;
-  margin-top: 2rem;
+    display: none;
+    text-align: left;
+    margin-top: 2rem;
 }
+
 .self_asserted_container .row .panel-default .panel-body #api #attributeVerification .pageLevel {
-  color: #bb0000;
-  text-align: left;
+    color: #bb0000;
+    text-align: left;
 }
+
 .self_asserted_container .row .panel-default .panel-body #api #attributeVerification .error {
-  color: #bb0000;
-  text-align: left;
-  margin-bottom: 5px;
+    color: #bb0000;
+    text-align: left;
+    margin-bottom: 5px;
 }
+
 .errorText {
     border: none;
     padding: 0px;
     background: none;
     color: #a61e0c;
 }
+
 .self_asserted_container .row .panel-default .panel-body #api .verifying-modal {
-  display: none;
-  margin-top: 10px;
+    display: none;
+    margin-top: 10px;
 }
+
 #attributeVerification #attributeList ul {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
+
 #attributeVerification #attributeList ul li input {
-  width: 100%;
+    width: 100%;
 }
+
 #attributeVerification #attributeList ul li .helpText {
-  display: none;
-  color: #a61e0c;
-  text-align: justify;
+    display: none;
+    color: #a61e0c;
+    text-align: justify;
 }
+
 #attributeVerification #attributeList ul li #email_success.verificationSuccessText {
-  float: left;
+    float: left;
 }
+
 #attributeVerification #attributeList ul li #email_info {
-  float: left;
+    float: left;
 }
+
 #attributeVerification #attributeList ul li .attrEntry.validate #email_fail_retry {
-  float: left;
+    float: left;
 }
+
 #attributeVerification #attributeList ul li .attrEntry.validate #email_fail_server {
-  float: left;
-  text-align: left;
+    float: left;
+    text-align: left;
 }
+
 #attributeVerification #attributeList ul li #email_fail_no_retry {
-  float: left;
+    float: left;
 }
+
 div#email_intro {
-  display: block !important;
-  text-align: left;
+    display: block !important;
+    text-align: left;
 }
+
 div#email_info {
-  text-align: left;
+    text-align: left;
 }
 
 #attributeVerification #attributeList ul li input[type="radio"],
@@ -96,8 +115,10 @@ div#email_info {
     margin: 0.5rem;
 }
 
+
 /* Checkbox styling */
-#attributeList ul li input[type="checkbox"] + label {
+
+#attributeList ul li input[type="checkbox"]+label {
     float: left;
     display: inline-block !important;
     margin: 0.8rem 0rem 0rem 0.8rem;
@@ -165,7 +186,8 @@ div#email_info {
 
 
 /* Radio button styling */
-#attributeList ul li input[type="radio"] + label {
+
+#attributeList ul li input[type="radio"]+label {
     float: left;
     display: inline-block !important;
     margin: 0.5rem;

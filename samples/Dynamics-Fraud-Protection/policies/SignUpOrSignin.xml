@@ -29,11 +29,11 @@
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
         <OutputClaim ClaimTypeReferenceId="identityProvider" />
         <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
-        <OutputClaim ClaimTypeReferenceId="dfp_metadata_trackingId" PartnerClaimType="tracking_id" DefaultValue="{Context:CorrelationId}" />
+        <OutputClaim ClaimTypeReferenceId="dfp_metadata_trackingId" PartnerClaimType="dfp_tracking_id" />
         <OutputClaim ClaimTypeReferenceId="dfp_transactionId" PartnerClaimType="dfp_transaction_id" />
-        <OutputClaim ClaimTypeReferenceId="dfp_merchantRuleDecision" PartnerClaimType="access_decision" />
-        <OutputClaim ClaimTypeReferenceId="dfp_response_botScore" PartnerClaimType="bot_score" />
-        <OutputClaim ClaimTypeReferenceId="dfp_response_riskScore" PartnerClaimType="risk_score" />
+        <OutputClaim ClaimTypeReferenceId="dfp_merchantRuleDecision" PartnerClaimType="dfp_access_decision" />
+        <OutputClaim ClaimTypeReferenceId="dfp_response_botScore" PartnerClaimType="dfp_bot_score" />
+        <OutputClaim ClaimTypeReferenceId="dfp_response_riskScore" PartnerClaimType="dfp_risk_score" />
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>
