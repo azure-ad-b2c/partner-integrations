@@ -1,30 +1,20 @@
 # Introduction
 
-Microsoft Dynamics 365 Fraud Protection (DFP) Account Protection provides clients the capability to assess if the risk of attempts to create new accounts and attempts to login on client’s ecosystem are fraudulent. DFP assessment in Fraud Protection can be used by the customer to block or challenge suspicious attempts to create new fake accounts or to compromise existing accounts. Account protection includes artificial intelligence empowered device fingerprinting, APIs for real-time risk assessment, rule and list experience to optimize risk strategy as per client’s business needs, and a scorecard to monitor fraud protection effectiveness and trends in client’s ecosystem.
+Microsoft Dynamics 365 Fraud Protection (DFP) Account Protection provides organizations with the capability to assess if the risk of attempts to create new accounts and attempts to login on to the organization's ecosystem are fraudulent. DFP account protection can be used to block or challenge suspicious attempts to create new fake accounts or to compromise existing accounts.
 
-In this sample, we will be demonstrating the account protection features of
-Dynamics 365 Fraud Protection by integrating it with an Azure AD B2C user flow. The
-service will externally fingerprint every sign in or sign up attempt and watch for
-any past or present suspicious behaviour. Before completing the process, client
-application (in this case, Azure AD B2C) invokes a decision endpoint from DFP
-which returns a result based on all past and present behaviour from the identified
-user, as well as custom rules you have specified within the DFP service. The
-client application is then expected to base it's approval decision based on this
-result and pass the same back to DFP.
+This sample demonstrates how to incoporate the DFP device fingerprinting and acount creation and sign-in assessment API endpoints into an Azure AD B2C custom policy.
 
 # Solution Components
 
-Following are the parts of this demo:
+The following compontents are the parts of this sample:
 
-- **Azure AD B2C Tenant**: Azure AD B2C acts as the "client application" that we will be monitoring
-    with DFP. In this configuration all the apps which are connect to Azure AD B2C can benefit from
-    the DFP protection. Azure AD B2C integrates the DFP fingerprinting script which collects
+- **Azure AD B2C Tenant**: Azure AD B2C integrates the DFP fingerprinting script which collects
     device profiling information for every user that authenticates via a target Azure AD B2C policy.
     Azure AD B2C subsequently blocks or challenges sign in or sign up attempts based on the rule
     evaluation result returned by DFP.
 
-- **Custom UI Tempaltes**: These UI templates are used to customize the HTML content of the pages
-    rendered by Azure AD B2C. These pages include the JavaScript snipped for DFP fingerprinting.
+- **Custom UI Templates**: These UI templates are used to customize the HTML content of the pages
+    rendered by Azure AD B2C. These pages include the JavaScript snippet required for DFP fingerprinting.
 
 - **DFP Fingerprinting Service**: This is a JavaScript snippet embedded in the Azure AD B2C
     UI template pages which logs device profile information create a uniquely
@@ -40,8 +30,6 @@ Following are the parts of this demo:
 ## Workflow Overview
 
 ![DFP process flow](./media/DFPFlow.drawio.png)
-
-DFP process flow
 
 ## Setting Up the Solution
 
@@ -59,10 +47,9 @@ Follow [these instructions](https://docs.microsoft.com/en-us/dynamics365/fraud-p
 
 ### Custom domain setup requirements
 
-In a production environment, you must use a custom domain for Azure AD B2C and for the DFP fingerprinting service. The domain for both service should reside in the same root DNS zone prevent the browser privacy settings from blocking cross-domain cookies. This is not necessary in a non-production environment.
+In a production environment, you must use a custom domain for Azure AD B2C and for the DFP fingerprinting service. The domain for both services should reside in the same root DNS zone prevent browser privacy settings from blocking cross-domain cookies. This is not necessary in a non-production environment.
 
 For example:
-
 | Environment       | Service               | Domain                    |
 | --                | --                    | --                        |
 | Development       | Azure AD B2C          | contoso-dev.b2clogin.com  |
@@ -81,7 +68,7 @@ Deploy the provided Azure AD B2C UI templates from the [`ui-templates`](./ui-tem
 
 Before deploying, you should perform a find & replace operation in the UI files to replace the value `https://<YOUR-UI-BASE-URL>/` with the root URL for your deployment location. Also note the base URL as it will be required for the configuration of your Azure AD B2C policies.
 
-Follow [these instructions](https://docs.microsoft.com/en-us/azure/active-directory-b2c/customize-ui-with-html?pivots=b2c-custom-policy) for more information. Ensure CORS is enabled for your Azure AD B2C domain name (i.e.: `https://{your_tenant_name}.b2clogin.com` or your custom domain).
+Reference [these instructions](https://docs.microsoft.com/en-us/azure/active-directory-b2c/customize-ui-with-html?pivots=b2c-custom-policy) for more information about UI customization. Ensure CORS is enabled for your Azure AD B2C domain name (i.e.: `https://{your_tenant_name}.b2clogin.com` or your custom domain).
 
 ### Azure AD B2C Configuration
 
@@ -116,13 +103,12 @@ In the provided custom policies in the [`policies`](./policies/) folder, find th
 | {Settings:DfpAppClientSecretKeyContainer} | Name of the policy key in which you save the DFP client secret | `B2C_1A_DFPClientSecret` |
 
 
-\*Application Insights can be setup in any Azure AD tenant/subscription. This value is optional but recommended to assist with debugging. See [this documentation page](https://docs.microsoft.com/en-us/azure/active-directory-b2c/troubleshoot-with-application-insights) for more information.
+_\*Application Insights can be setup in any Azure AD tenant/subscription. This value is optional but recommended to assist with debugging. See [this documentation page](https://docs.microsoft.com/en-us/azure/active-directory-b2c/troubleshoot-with-application-insights) for more information._
 
-#### Configure the B2C Tenant
+#### Configure the Azure AD B2C Tenant
 
-For instructions on how to set up your b2c tenant and configure policies, visit [this
+For instructions on how to set up your Azure AD B2C tenant and configure policies, visit [this
 documentation page](https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack).
 
 **Note:** As a best practice, we recommend that customers add consent notification in the attribute collection page. 
-You should notify users that device telemetry and user identity information will be recorded for account protection purposes.
-_The UI templates provided in this sample DO NOT demonstrate this notification._
+You should notify users that device telemetry and user identity information will be recorded for account protection purposes in accordance with local regulations. _The UI templates provided in this sample DO NOT include this notification._
