@@ -68,6 +68,8 @@ Deploy the provided Azure AD B2C UI templates from the [`ui-templates`](./ui-tem
 
 Before deploying, you should perform a find & replace operation in the UI files to replace the value `https://<YOUR-UI-BASE-URL>/` with the root URL for your deployment location. Also note the base URL as it will be required for the configuration of your Azure AD B2C policies.
 
+In the `ui-templates/js/dfp.js` file, replace `<YOUR-DFP-INSTANCE-ID>` with your DFP instance ID.
+
 Reference [these instructions](https://docs.microsoft.com/en-us/azure/active-directory-b2c/customize-ui-with-html?pivots=b2c-custom-policy) for more information about UI customization. Ensure CORS is enabled for your Azure AD B2C domain name (i.e.: `https://{your_tenant_name}.b2clogin.com` or your custom domain).
 
 ### Azure AD B2C Configuration
