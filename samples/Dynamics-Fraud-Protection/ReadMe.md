@@ -1,6 +1,3 @@
-# WARNING
-**_This code is not production ready._ It takes a hard dependency on a hardcoded dummy value in the DFP API URLs. This will cause DFP risk scoring to not work correctly. Once this is resolved, the code will be ready.**
-
 # Introduction
 
 Microsoft Dynamics 365 Fraud Protection (DFP) Account Protection provides clients the capability to assess if the risk of attempts to create new accounts and attempts to login on client’s ecosystem are fraudulent. DFP assessment in Fraud Protection can be used by the customer to block or challenge suspicious attempts to create new fake accounts or to compromise existing accounts. Account protection includes artificial intelligence empowered device fingerprinting, APIs for real-time risk assessment, rule and list experience to optimize risk strategy as per client’s business needs, and a scorecard to monitor fraud protection effectiveness and trends in client’s ecosystem.
