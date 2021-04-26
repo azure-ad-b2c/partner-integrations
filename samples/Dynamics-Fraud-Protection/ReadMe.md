@@ -17,7 +17,7 @@ The following compontents are the parts of this sample:
     rendered by Azure AD B2C. These pages include the JavaScript snippet required for DFP fingerprinting.
 
 - **DFP Fingerprinting Service**: This is a JavaScript snippet embedded in the Azure AD B2C
-    UI template pages which logs device profile information create a uniquely
+    UI template pages which logs device profile information and creates a uniquely
     identifiable fingerprint for the user. This will later be used in the DFP risk
     evaluation process.
 
@@ -47,7 +47,7 @@ Follow [these instructions](https://docs.microsoft.com/en-us/dynamics365/fraud-p
 
 ### Custom domain setup requirements
 
-In a production environment, you must use a custom domain for Azure AD B2C and for the DFP fingerprinting service. The domain for both services should reside in the same root DNS zone prevent browser privacy settings from blocking cross-domain cookies. This is not necessary in a non-production environment.
+In a production environment, you must use a custom domain for Azure AD B2C and for the DFP fingerprinting service. The domain for both services should reside in the same root DNS zone in order to prevent browser privacy settings from blocking cross-domain cookies. This is not necessary in a non-production environment.
 
 For example:
 | Environment       | Service               | Domain                    |
@@ -78,7 +78,7 @@ Reference [these instructions](https://docs.microsoft.com/en-us/azure/active-di
 
 In the Azure AD tenant where Dynamics Fraud Protection is setup, create an Azure AD application and grant admin consent for the `` scope. For more information see [this documenation page](https://docs.microsoft.com/en-us/dynamics365/fraud-protection/integrate-real-time-api#create-azure-active-directory-applications).
 
-Create an secret value for this application registration and note the application's client ID and client secret value.
+Create a secret value for this application registration and note the application's client ID and client secret value.
 
 Save the client ID and client secret values as policy keys in your Azure AD B2C tenant. Note the policy keys as you will need them when you configure your Azure AD B2C policies. For more information, see [this documentation page](https://docs.microsoft.com/en-us/azure/active-directory-b2c/policy-keys-overview).
 
