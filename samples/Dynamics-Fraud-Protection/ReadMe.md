@@ -76,7 +76,7 @@ Reference [these instructions](https://docs.microsoft.com/en-us/azure/active-di
 
 #### Add policy keys for your DFP client app ID and secret
 
-In the Azure AD tenant where Dynamics Fraud Protection is setup, create an Azure AD application and grant admin consent for the `` scope. For more information see [this documenation page](https://docs.microsoft.com/en-us/dynamics365/fraud-protection/integrate-real-time-api#create-azure-active-directory-applications).
+In the Azure AD tenant where Dynamics Fraud Protection is setup, create an Azure AD application and grant admin consent for the `Dynamics 365 Fraud Protection Risk API` (or `Sandbox Risk API`) scope. For more information see [this documenation page](https://docs.microsoft.com/en-us/dynamics365/fraud-protection/integrate-real-time-api#create-azure-active-directory-applications).
 
 Create a secret value for this application registration and note the application's client ID and client secret value.
 
@@ -98,7 +98,7 @@ In the provided custom policies in the [`policies`](./policies/) folder, find th
 | {Settings:FacebookClientId} | App id of the Facebook app you configured for federation with B2C | `000000000000000` |
 | {Settings:FacebookClientSecretKeyContainer} | Name of the policy key in which you saved Facebook's app secret | `B2C_1A_FacebookAppSecret` |
 | {Settings:ContentDefinitionBaseUri} | Endpoint in where you deployed the UI files | `https://<my-storage-account>.blob.core.windows.net/<my-storage-container>` |
-| {Settings:DfpApiBaseUrl} | The base path for your DFP API instace - this can be found in the DFP portal | `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics.com/v1.0/` |
+| {Settings:DfpApiBaseUrl} | The base path for your DFP API instace - this can be found in the DFP portal | `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics.com/v1.0/` or `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics-int.com/v1.0/` |
 | {Settings:DfpApiAuthScope} | The client_credentials scope for the DFP API service | `https://api.dfp.dynamics-int.com/.default` or `https://api.dfp.dynamics.com/.default` |
 | {Settings:DfpTenantId} | The ID of the Azure AD tenant (not B2C) where DFP is licensed and installed | `01234567-89ab-cdef-0123-456789abcdef` or `consoto.onmicrosoft.com` |
 | {Settings:DfpAppClientIdKeyContainer} | Name of the policy key in which you save the DFP client ID  | `B2C_1A_DFPClientId` |
