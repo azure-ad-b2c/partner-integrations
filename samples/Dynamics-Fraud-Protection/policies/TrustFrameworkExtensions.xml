@@ -518,13 +518,6 @@
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
 
-        <TechnicalProfile Id="AAD-Common">
-          <Metadata>
-            <Item Key="ApplicationObjectId">{Settings:ExtensionsObjectId}</Item>
-            <Item Key="ClientId">{Settings:ExtensionAppId}</Item>
-          </Metadata>
-        </TechnicalProfile>
-
         <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">
           <Metadata>
             <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">false</Item>
