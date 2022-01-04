@@ -115,7 +115,7 @@ You can define a Login.gov account as a claims provider by adding it to the **C
 
 Next, you need an Authentication Context Class Reference (ACR) value for the IAL. Login.gov supports IAL1 and IAL2.
 
-Add the [ACR](link) value to the `ClaimsSchema` element
+Add the [ACR](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/OIDC/Buildingblock.xml) value to the `ClaimsSchema` element
 within `BuildingBlocks`.
 
 ### Add a user journey for OIDC
@@ -143,7 +143,7 @@ The **ClaimsProviderSelections** element contains a list of identity providers
 
 2. In the next orchestration step, add a **ClaimsExchange** element. Set the **Id** to the value of the target claims exchange Id. Update the value of **TechnicalProfileReferenceId** to the Id of the     technical profile you created earlier.
 
-The [XML](link) demonstrates the first two orchestration steps of a user journey with the identity provider.
+The [XML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/OIDC/UserJourney.xml) demonstrates the first two orchestration steps of a user journey with the identity provider.
 
 ### Configure the relying party policy using OIDC
 
@@ -153,7 +153,7 @@ specifies the user journey which Azure AD B2C will execute. Find
 the **DefaultUserJourney** element within [relying
 party](https://docs.microsoft.com/azure/active-directory-b2c/relyingparty). Update the **ReferenceId** to match the user journey ID, in which you added the identity provider.
 
-In the [example](link), for the SignUpOrSignIn user journey,
+In the [example](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/OIDC/SignupSignin.xml), for the SignUpOrSignIn user journey,
 the **ReferenceId** is set to SignUpOrSignIn.
 
 ### Configure Login.gov as an Identity provider using SAML
@@ -166,7 +166,7 @@ You can define a Login.gov account as a claims provider by adding it to the **C
 
 2. Find the **ClaimsProviders** element. If it does not exist, add it under the root element.
 
-3. Add a new [**ClaimsProvider**](link).
+3. Add a new [**ClaimsProvider**](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/SAML/TrustFrameworkExtensions.xml).
 
 >[!Note]
 >There is 1 TechnicalProfile defined for IAL2.
@@ -178,7 +178,7 @@ registration.
 
 ### Add the ACR for SAML
 
-You'll need an acr value specified for the set of claims attributes to be included based on the Identity Assurance Level (IAL). Login.gov supports IAL1 and IAL2. Here is an [example](link) for IAL2 that is included in the `Metadata` element within the `TechnicalProfile`.
+You'll need an acr value specified for the set of claims attributes to be included based on the Identity Assurance Level (IAL). Login.gov supports IAL1 and IAL2. Here is an [example](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/SAML/Buildingblock.xml) for IAL2 that is included in the `Metadata` element within the `TechnicalProfile`.
 
 >[!NOTE]
 >The requested attributes are separated by space (+).
@@ -212,7 +212,7 @@ Now that you have a user journey, add the new identity provider to the user jour
 2. In the next orchestration step, add a **ClaimsExchange** element. Set the **Id** to the value of the target claims exchange Id. Update the value of **TechnicalProfileReferenceId** to the Id of the
 technical profile you created earlier.
 
-The [XML](link) demonstrates the first two orchestration steps of a user journey with the identity provider.
+The [XML](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/SAML/UserJourney.xml) demonstrates the first two orchestration steps of a user journey with the identity provider.
 
 ### Configure the relying party policy using SAML
 
@@ -222,7 +222,7 @@ specifies the user journey which Azure AD B2C will execute. Find
 the **DefaultUserJourney** element within [relying
 party](https://docs.microsoft.com/azure/active-directory-b2c/relyingparty). Update the **ReferenceId** to match the user journey ID, in which you added the identity provider.
 
-In the provided [example](link), for the SignUpOrSignIn user journey, the **ReferenceId** is set to SignUpOrSignIn:
+In the provided [example](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/SAML/SignupSignin.xml), for the SignUpOrSignIn user journey, the **ReferenceId** is set to SignUpOrSignIn:
 
 ## Upload the custom policy
 
