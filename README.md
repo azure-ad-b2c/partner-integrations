@@ -26,7 +26,7 @@ In this repo, you will find samples for integrating partner solutions with Azure
 
 - [Jumio](samples/Jumio) - [Jumio](https://www.jumio.com/) enables real-time automated ID verification, safeguarding customer data. Here, we integrating Jumio ID verification service and Azure AD B2C with the help of an Intermediate REST API Service.
 
-- [Login.gov](samples/Login.gov) - [Login.gov]((https://www.login.gov/) is a trusted, government-issued sign-in service managed by the United States General Services Administration (US, GSA) agency. Login.gov is also a FedRAMP moderate approved multi-factor authentication (MFA) and identity proofing platform. It's used by the public for secure access to US government services.
+- [Login.gov](samples/Login.gov) - [Login.gov](https://www.login.gov/) is a trusted, government-issued sign-in service managed by the United States General Services Administration (US, GSA) agency. Login.gov is also a FedRAMP moderate approved multi-factor authentication (MFA) and identity proofing platform. It's used by the public for secure access to US government services.
 
 - [Nevis](samples/Nevis) - [Nevis](https://www.nevis-security.com/en/offering/authentication-cloud/) provides a mobile-first, fully-brandable and secure authentication experience for the end-users with Azure AD B2C. Enables strong customer authentication (SCA) and complies with PSD2 (Payment Services Directive 2) transaction requirements using the whitelabel NEVIS Access App
 
