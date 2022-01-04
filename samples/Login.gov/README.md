@@ -10,10 +10,10 @@ The Login.Gov integration is comprised of the following components:
 
 - **Azure AD B2C tenant** - The authorization server, responsible for verifying the user's credentials using the custom policies defined in the tenant.
 
-- **[Custom policies in Azure AD B2C]**(https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows?pivots=b2c-custom-policy).
+- [**Custom policies in Azure AD B2C**](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows?pivots=b2c-custom-policy).
 
-- **[Register a web application]**(https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) and **[enable the ID token implicit
-grant]**(https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications#enable-id-token-implicit-grant).
+- [**Register a web application**](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) and [**enable the ID token implicit
+grant**](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications#enable-id-token-implicit-grant).
 
 - **Login.gov account** - Login.gov provides a [sandbox](https://developers.login.gov/testing/) environment for testing app integration. Review the [developers guide](https://developers.login.gov/overview/). Once you've tested your integration in the sandbox environment, you can request deployment to the Login.gov
 [production](https://developers.login.gov/production/) environment.
