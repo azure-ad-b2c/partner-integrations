@@ -8,14 +8,14 @@ In this sample tutorial, we will review how to configure Login.gov as an externa
 
 The Login.Gov integration is comprised of the following components:
 
-- Azure AD B2C tenant - The authorization server, responsible for verifying the user's credentials using the custom policies defined in the tenant.
+- **Azure AD B2C tenant** - The authorization server, responsible for verifying the user's credentials using the custom policies defined in the tenant.
 
-- Complete the steps in [custom policies in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows?pivots=b2c-custom-policy).
+- **[Custom policies in Azure AD B2C]**(https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows?pivots=b2c-custom-policy).
 
-- If you haven't already, [register a web application](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) and [enable the ID token implicit
-grant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications#enable-id-token-implicit-grant).
+- **[Register a web application]**(https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) and **[enable the ID token implicit
+grant]**(https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications#enable-id-token-implicit-grant).
 
-- Login.gov account - Login.gov provides a [sandbox](https://developers.login.gov/testing/) environment for testing app integration. Review the [developers guide](https://developers.login.gov/overview/). Once you've tested your integration in the sandbox environment, you can request deployment to the Login.gov
+- **Login.gov account** - Login.gov provides a [sandbox](https://developers.login.gov/testing/) environment for testing app integration. Review the [developers guide](https://developers.login.gov/overview/). Once you've tested your integration in the sandbox environment, you can request deployment to the Login.gov
 [production](https://developers.login.gov/production/) environment.
 
 ## Scenario description
@@ -91,7 +91,7 @@ You need to store the client secret that you previously recorded in your Azure A
 
 10. Select **Create**.
 
-### Configure Login.gov as an Identity provider using OIDC
+## Configure Login.gov as an Identity provider using OIDC
 
 To enable users to sign in using Login.gov account, define
 the account as a claims provider that Azure AD B2C can communicate with through an endpoint. The endpoint provides a set of claims that are used by Azure AD B2C to verify that a specific user has authenticated.
@@ -156,7 +156,7 @@ party](https://docs.microsoft.com/azure/active-directory-b2c/relyingparty). Upda
 In the [example](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/OIDC/SignupSignin.xml), for the SignUpOrSignIn user journey,
 the **ReferenceId** is set to SignUpOrSignIn.
 
-### Configure Login.gov as an Identity provider using SAML
+## Configure Login.gov as an Identity provider using SAML
 
 To enable users to sign in using Login.gov account, you need to define the account as a claims provider that Azure AD B2C can communicate with through an endpoint. The endpoint provides a set of claims that are used by Azure AD B2C to verify a specific user has authenticated.
 
