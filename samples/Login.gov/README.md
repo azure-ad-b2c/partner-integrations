@@ -91,6 +91,8 @@ You need to store the client secret that you previously recorded in your Azure A
 
 10. Select **Create**.
 
+## Configure using OIDC
+
 ### Configure Login.gov as an Identity provider using OIDC
 
 To enable users to sign in using Login.gov account, define
@@ -155,6 +157,8 @@ party](https://docs.microsoft.com/azure/active-directory-b2c/relyingparty). Upda
 
 In the [example](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/OIDC/SignupSignin.xml), for the SignUpOrSignIn user journey,
 the **ReferenceId** is set to SignUpOrSignIn.
+
+## Configure using SAML
 
 ### Configure Login.gov as an Identity provider using SAML
 
