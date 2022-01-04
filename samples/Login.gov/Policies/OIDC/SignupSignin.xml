@@ -1,0 +1,20 @@
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <UserJourneyBehaviors>
+      <SingleSignOn Scope="Policy" KeepAliveInDays="7" EnforceIdTokenHintOnLogout="true" />
+    </UserJourneyBehaviors>
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+
+    </TechnicalProfile>
+  </RelyingParty>

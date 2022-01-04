@@ -1,0 +1,37 @@
+<ClaimsProviders>
+    <ClaimsProvider>
+      <DisplayName>Login.gov</DisplayName>
+      <TechnicalProfiles>        
+<TechnicalProfile Id="LoginGov-SAML">
+          <DisplayName>Login.gov IAL2</DisplayName>
+          <Protocol Name="SAML2" />
+          <Metadata>
+            <Item Key="PartnerEntity">https://idp.int.identitysandbox.gov/api/saml/metadata2020</Item>
+            <Item Key="IncludeAuthnContextClassReferences">http://idmanagement.gov/ns/assurance/ial/2,http://idmanagement.gov/ns/requested_attributes?ReqAttr=uuid+email+first_name+last_name+phone+verified_at+x509_presented</Item>
+            <Item Key="WantsSignedAssertions">true</Item>
+            <Item Key="ResponsesSigned">false</Item>
+            <Item Key="WantsEncryptedAssertions">false</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="SamlMessageSigning" StorageReferenceId="{Settings:LoginGovCertificateKeyContainer}" />          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="login.gov" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="assertionSubjectName" />
+            <OutputClaim ClaimTypeReferenceId="displayName" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" PartnerClaimType="phone" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateDisplayNameFromFirstNameAndLastName" />
+            <OutputClaimsTransformation ReferenceId="AddCountryCodeToStrongAuthPhoneNumber" />
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>

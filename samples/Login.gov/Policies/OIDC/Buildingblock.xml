@@ -1,0 +1,8 @@
+<BuildingBlocks>
+    <ClaimsSchema>
+      <ClaimType Id="acr_values">
+        <DisplayName>Authentication Context Reference</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+    </ClaimsSchema>
+  </BuildingBlocks>

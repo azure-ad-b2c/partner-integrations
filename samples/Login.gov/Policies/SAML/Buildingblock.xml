@@ -1,0 +1,2 @@
+<Item Key="IncludeAuthnContextClassReferences">http://idmanagement.gov/ns/assurance/ial/2,http://idmanagement.gov/ns/requested_attributes?ReqAttr=uuid+email+first_name+last_name+phone+verified_at+x509_presented</Item>
+  </ClaimsProviders>

@@ -1,0 +1,78 @@
+<ClaimsProviders>
+    <ClaimsProvider>
+      <DisplayName>Login.gov</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="LoginGov-IAL1-OIDC">
+          <DisplayName>Login.gov IAL1</DisplayName>
+          <Protocol Name="OpenIdConnect" />
+          <Metadata>
+            <Item Key="client_id">urn:gov:gsa:openidconnect.profiles:sp:sso:test_entity:test_app</Item>
+            <Item Key="METADATA">https://idp.int.identitysandbox.gov/.well-known/openid-configuration</Item>
+            <Item Key="scope">openid profile email</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="response_mode">query</Item>
+            <Item Key="token_endpoint_auth_method">private_key_jwt</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="SingleLogoutEnabled">true</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="assertion_signing_key" StorageReferenceId="B2C_1A_LoginGovSecret" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="acr_values" DefaultValue="http://idmanagement.gov/ns/assurance/ial/1" AlwaysUseDefaultValue="true" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="login.gov" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+        </TechnicalProfile>
+        <TechnicalProfile Id="LoginGov-IAL2-OIDC">
+          <DisplayName>Login.gov IAL2</DisplayName>
+          <Protocol Name="OpenIdConnect" />
+          <Metadata>
+            <Item Key="client_id">urn:gov:gsa:openidconnect.profiles:sp:sso:test_entity:test_app</Item>
+            <Item Key="METADATA">https://idp.int.identitysandbox.gov/.well-known/openid-configuration</Item>
+            <Item Key="scope">openid profile email phone verified_at</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="response_mode">query</Item>
+            <Item Key="token_endpoint_auth_method">private_key_jwt</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="SingleLogoutEnabled">true</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="assertion_signing_key" StorageReferenceId="{Settings:LoginGovCertificateKeyContainer}" />
+          </CryptographicKeys>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="acr_values" DefaultValue="http://idmanagement.gov/ns/assurance/ial/2" AlwaysUseDefaultValue="true" />
+          </InputClaims>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="login.gov" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="displayName" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" PartnerClaimType="phone" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateDisplayNameFromFirstNameAndLastName" />
+            <OutputClaimsTransformation ReferenceId="AddCountryCodeToStrongAuthPhoneNumber" />
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>
+
