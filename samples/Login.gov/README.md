@@ -1,7 +1,3 @@
----
-title: Tutorial for configuring Login.Gov with Azure Active Directory B2C
----
-
 # Login.Gov
 
 [Login.gov](https://www.login.gov/) is a trusted, government-issued sign-in service managed by the United States General Services Administration (US, GSA) agency. Login.gov is also a FedRAMP moderate approved multi-factor authentication (MFA) and identity proofing platform. It's used by the public for secure access to US government services.
