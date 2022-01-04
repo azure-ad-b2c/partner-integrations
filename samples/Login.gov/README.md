@@ -102,7 +102,7 @@ You can define a Login.gov account as a claims provider by adding it to the **C
 
 2. Find the **ClaimsProviders** element. If it doesn't exist, add it under the root element.
 
-3. Add a new **ClaimsProvider** (claims provider)
+3. Add a new [**ClaimsProvider**](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Login.gov/Policies/OIDC/TrustFrameworkExtensions.xml)
 
 >[!NOTE]
 >There are 2 TechnicalProfiles defined, one for Identity Assurance Level 1 (IAL1) and another for IAL2.
