@@ -43,7 +43,7 @@ Follow [these instructions](https://docs.microsoft.com/en-us/azure/active-direct
 
 ### Setting up Dynamics 365 Fraud Protection
 
-Follow [these instructions](https://docs.microsoft.com/en-us/dynamics365/fraud-protection/integrate-real-time-api) to setup the DFP real-time APIs.
+Follow [these instructions](https://docs.microsoft.com/en-us/dynamics365/fraud-protection/integrate-ap-api) to setup the DFP real-time APIs.
 
 ### Custom domain setup requirements
 
