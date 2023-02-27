@@ -837,7 +837,7 @@
         <TechnicalProfile Id="RestApi-DFP-CreateAccount">
           <DisplayName>DFP Create Account</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/create/</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/create?x-ms-dfpenvid={Settings:DfpEnvironment}/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-ConvertAuthSourceToAuthProvier" />
@@ -860,7 +860,7 @@
         <TechnicalProfile Id="RestApi-DFP-CreateAccountStatus">
           <DisplayName>DFP Create Account Status</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/create/status/</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/create/status?x-ms-dfpenvid={Settings:DfpEnvironment}/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-CreateAccountStatus-RequestPayload" />
@@ -871,7 +871,7 @@
         <TechnicalProfile Id="RestApi-DFP-LoginAccount">
           <DisplayName>DFP Login</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/login/</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}action/account/login?x-ms-dfpenvid={Settings:DfpEnvironment}/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-ConvertAuthSourceToAuthProvier" />
@@ -894,7 +894,7 @@
         <TechnicalProfile Id="RestApi-DFP-LoginAccountStatus">
           <DisplayName>DFP Login Status</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/login/status/</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/login/status?x-ms-dfpenvid={Settings:DfpEnvironment}/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-LoginAccountStatus-RequestPayload" />
@@ -909,7 +909,7 @@
         <TechnicalProfile Id="RestApi-DFP-UpdateAccount">
           <DisplayName>DFP Update Account</DisplayName>
           <Metadata>
-            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/update/</Item>
+            <Item Key="ServiceUrl">{Settings:DfpApiBaseUrl}observe/account/update?x-ms-dfpenvid={Settings:DfpEnvironment}/</Item>
           </Metadata>
           <InputClaimsTransformations>
             <InputClaimsTransformation ReferenceId="DFP-ConvertAuthSourceToAuthProvier" />
