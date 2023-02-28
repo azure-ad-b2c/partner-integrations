@@ -99,11 +99,11 @@ In the provided custom policies in the [`policies`](./policies/) folder, find th
 | {Settings:FacebookClientSecretKeyContainer} | Name of the policy key in which you saved Facebook's app secret | `B2C_1A_FacebookAppSecret` |
 | {Settings:ContentDefinitionBaseUri} | Endpoint in where you deployed the UI files | `https://<my-storage-account>.blob.core.windows.net/<my-storage-container>` |
 | {Settings:DfpApiBaseUrl} | The base path for your DFP API instace - this can be found in the DFP portal | `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics.com/v1.0/` or `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics-int.com/v1.0/` |
-| {Settings:DfpEnvironment} | x-ms-dfpenvid is a Globally Unique Identifier indicating the ID of the DFP environment that you send the data to. | `12345678-1234-1234-1234-123456789abc` |
 | {Settings:DfpApiAuthScope} | The client_credentials scope for the DFP API service | `https://api.dfp.dynamics-int.com/.default` or `https://api.dfp.dynamics.com/.default` |
 | {Settings:DfpTenantId} | The ID of the Azure AD tenant (not B2C) where DFP is licensed and installed | `01234567-89ab-cdef-0123-456789abcdef` or `consoto.onmicrosoft.com` |
 | {Settings:DfpAppClientIdKeyContainer} | Name of the policy key in which you save the DFP client ID  | `B2C_1A_DFPClientId` |
 | {Settings:DfpAppClientSecretKeyContainer} | Name of the policy key in which you save the DFP client secret | `B2C_1A_DFPClientSecret` |
+| {Settings:DfpEnvironment} | Environment ID is a global unique identifier of the DFP environment that you send the data to. Your custom policy should call the API endpoint, including the query string parameter x-ms-dfpenvid=your-env-id> | `12345678-1234-1234-1234-123456789abc` |
 
 
 _\*Application Insights can be setup in any Azure AD tenant/subscription. This value is optional but recommended to assist with debugging. See [this documentation page](https://docs.microsoft.com/en-us/azure/active-directory-b2c/troubleshoot-with-application-insights) for more information._
